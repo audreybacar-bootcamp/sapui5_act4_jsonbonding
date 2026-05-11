@@ -51,7 +51,13 @@
         "settings": {
           "bundleName": "jsonbinding.i18n.i18n"
         }
-      }
+      },
+    "ProductsModel":{  "type": "sap.ui.model.json.JSONModel",
+      "uri": "model/ProductsModel.json"
+},
+    "EmployeesModel":{  "type": "sap.ui.model.json.JSONModel",
+      "uri": "model/Employees.json"
+}
     },
     "resources": {
       "css": [
@@ -69,8 +75,7 @@
         "type": "View",
         "viewType": "XML",
         "path": "jsonbinding.view",
-        "async": true,
-        "viewPath": "jsonbinding.view"
+        "async": true
       },
       "routes": [
         {

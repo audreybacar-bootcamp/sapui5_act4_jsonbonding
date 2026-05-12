@@ -1,0 +1,40 @@
+{
+  "Employees": [
+    {
+      "Eid": "audrey.shen.l.dauzon",
+      "Enabled": true,
+      "Address": {
+        "Street": "123 Coffee Street",
+        "City": "Manila",
+        "Zip": "1000",
+        "Country": "Philippines"
+      },
+      "SalesAmount": 12500.75,
+      "CurrencyCode": "PHP"
+    },
+    {
+      "Eid": 1002,
+      "Enabled": false,
+      "Address": {
+        "Street": "45 Bean Avenue",
+        "City": "Quezon City",
+        "Zip": "1100",
+        "Country": "Philippines"
+      },
+      "SalesAmount": 9800.50,
+      "CurrencyCode": "PHP"
+    },
+    {
+      "Eid": 1003,
+      "Enabled": true,
+      "Address": {
+        "Street": "78 Espresso Lane",
+        "City": "Makati",
+        "Zip": "1200",
+        "Country": "Philippines"
+      },
+      "SalesAmount": 15720.00,
+      "CurrencyCode": "PHP"
+    }
+  ]
+}

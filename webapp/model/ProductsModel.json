@@ -1,0 +1,69 @@
+{
+  "Products": [
+    {
+      "ProductID": 1,
+      "ProductName": "Arabica Coffee Beans",
+      "SupplierID": 101,
+      "CategoryID": 1,
+      "QuantityPerUnit": "1 kg bag",
+      "UnitPrice": 25.50,
+      "UnitsInStock": 120,
+      "UnitsOnOrder": 30,
+      "ReorderLevel": 20,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 2,
+      "ProductName": "Robusta Coffee Beans",
+      "SupplierID": 102,
+      "CategoryID": 1,
+      "QuantityPerUnit": "500 g bag",
+      "UnitPrice": 14.75,
+      "UnitsInStock": 80,
+      "UnitsOnOrder": 20,
+      "ReorderLevel": 15,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 3,
+      "ProductName": "Espresso Blend Beans",
+      "SupplierID": 103,
+      "CategoryID": 2,
+      "QuantityPerUnit": "1 kg bag",
+      "UnitPrice": 32.00,
+      "UnitsInStock": 45,
+      "UnitsOnOrder": 10,
+      "ReorderLevel": 10,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 4,
+      "ProductName": "Colombian Coffee Beans",
+      "SupplierID": 104,
+      "CategoryID": 2,
+      "QuantityPerUnit": "250 g pack",
+      "UnitPrice": 11.25,
+      "UnitsInStock": 200,
+      "UnitsOnOrder": 0,
+      "ReorderLevel": 25,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 5,
+      "ProductName": "Decaf Coffee Beans",
+      "SupplierID": 105,
+      "CategoryID": 3,
+      "QuantityPerUnit": "500 g bag",
+      "UnitPrice": 18.90,
+      "UnitsInStock": 60,
+      "UnitsOnOrder": 15,
+      "ReorderLevel": 12,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    }
+  ]
+}

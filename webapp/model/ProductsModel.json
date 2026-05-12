@@ -10,7 +10,8 @@
       "UnitsInStock": 120,
       "UnitsOnOrder": 30,
       "ReorderLevel": 20,
-      "Discontinued": false
+      "Discontinued": false,
+      "CurrencyCode": "Php"
     },
     {
       "ProductID": 2,
@@ -22,7 +23,8 @@
       "UnitsInStock": 80,
       "UnitsOnOrder": 20,
       "ReorderLevel": 15,
-      "Discontinued": false
+      "Discontinued": false,
+      "CurrencyCode": "Php"
     },
     {
       "ProductID": 3,
@@ -34,7 +36,8 @@
       "UnitsInStock": 45,
       "UnitsOnOrder": 10,
       "ReorderLevel": 10,
-      "Discontinued": false
+      "Discontinued": false,
+      "CurrencyCode": "Php"
     },
     {
       "ProductID": 4,
@@ -46,7 +49,8 @@
       "UnitsInStock": 200,
       "UnitsOnOrder": 0,
       "ReorderLevel": 25,
-      "Discontinued": false
+      "Discontinued": false,
+      "CurrencyCode": "Php"
     },
     {
       "ProductID": 5,
@@ -58,7 +62,8 @@
       "UnitsInStock": 60,
       "UnitsOnOrder": 15,
       "ReorderLevel": 12,
-      "Discontinued": false
+      "Discontinued": false,
+      "CurrencyCode": "Php"
     }
   ]
 }

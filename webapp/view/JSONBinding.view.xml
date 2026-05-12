@@ -1,31 +1,93 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" controllerName="jsonbinding.controller.JSONBinding">
-    <Page id="page" title="{i18n>title}">
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    controllerName="jsonbinding.controller.JSONBinding">
 
+<Page id="page" title="{i18n>title}">
 
 <content>
-        <Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel0" headerText="Data Binding Basics" class="sapUIResponsiveMargin">   
-                <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form0">    
-                    <sap.ui.layout.form:content>
-                        <Label text="EID" id="EIDlabel"/>
-                        <Input width="auto" id="EIDinput" required="false"/>
-                        <Label text="Enabled" id="enablelabel"/>   
-                        <CheckBox id="enableCheckbox" required="false"/>
-                    </sap.ui.layout.form:content>    
-                </sap.ui.layout.form:SimpleForm>
-        </Panel>
-                <Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel1" headerText="Address Details" class="sapUIResponsiveMargin">   
-                <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form1">    
-                    <sap.ui.layout.form:content>
-                        <Label text="Address" id="Addresslabel"/>
-<Text id="textAddress" class="sapUiSmallMarginBottom" text="{EmployeesModel>/Address/Street} {EmployeesModel>/Address/Zip} {EmployeesModel>/Address/City} {EmployeesModel>/Address/Country}"/>
-                        <Link id="linkEmail" href="{ path: 'EmployeesModel>/EID', formatter: '.formatter.formatMail'}"/>
-                        <Label text="Sales Amount" id="salesamountLabel" class="sapUiSmallMarginBegin"/>   
-                        <Input id="salesamountInput" type="Number" maxLength="8" class="sapUiSmallMarginBegin" value="{ parts: [ {path: '/SalesAmount'}, {path: '/CurrencyCode'} ], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
-                    </sap.ui.layout.form:content>    
-                </sap.ui.layout.form:SimpleForm>   
-        <content/>
-        </Panel>
-<Panel xmlns="sap.m"
+
+<!-- ================= PANEL 0 ================= -->
+<Panel
+    width="auto"
+    expandable="true"
+    expanded="true"
+    id="panel0"
+    headerText="Data Binding Basics"
+    class="sapUIResponsiveMargin">
+
+    <form:SimpleForm
+        editable="true"
+        layout="ResponsiveGridLayout"
+        id="form0">
+
+        <form:content>
+            <Label text="EID" />
+            <Input
+                id="eidInput"
+                placeholder="Enter Eid"
+                liveChange="onEidSearch" />
+
+            <Label text="Enabled" />
+            <CheckBox
+                selected="{EmployeesModel>/Enabled}"
+                select="onEnableChange"/>
+        </form:content>
+
+    </form:SimpleForm>
+</Panel>
+
+<!-- ================= PANEL 1 ================= -->
+<Panel
+    width="auto"
+    expandable="true"
+    expanded="true"
+    id="panel1"
+    headerText="Employee Details"
+    class="sapUIResponsiveMargin">
+
+    <!-- Bind everything inside to SelectedEmployee -->
+    <form:SimpleForm
+        editable="true"
+        layout="ResponsiveGridLayout"
+        binding="{EmployeesModel>/SelectedEmployee}">
+
+        <form:content>
+
+            <Label text="Address" />
+            <Text text="{EmployeesModel>Address/Street}" />
+            <Text text="{EmployeesModel>Address/City}" />
+            <Text text="{EmployeesModel>Address/Zip}" />
+            <Text text="{EmployeesModel>Address/Country}" />
+
+            <Label text="Sales Amount" />
+            <Text
+                text="{
+                    parts: [
+                        { path: 'EmployeesModel>SalesAmount' },
+                        { path: 'EmployeesModel>CurrencyCode' }
+                    ],
+                    type: 'sap.ui.model.type.Currency',
+                    formatOptions: { showMeasure: false }
+                }" />
+
+            <Label text="Email Link" />
+            <Link
+                text="Send Email"
+                enabled="{= !!${EmployeesModel>Eid} }"
+                href="{
+                    path: 'EmployeesModel>Eid',
+                    formatter: '.formatter.formatMail'
+                }" />
+
+        </form:content>
+
+    </form:SimpleForm>
+</Panel>
+
+<!-- ================= PANEL 2 ================= -->
+<Panel
     width="auto"
     expandable="true"
     expanded="true"
@@ -39,73 +101,72 @@
         mode="SingleSelectMaster"
         selectionChange="onSelectionChange">
 
-        <items>
+        <ObjectListItem
+            title="{ProductsModel>ProductName}"
+            intro="{ProductsModel>QuantityPerUnit}"
+            number="{
+                parts: [
+                    { path: 'ProductsModel>UnitPrice' },
+                    { path: 'ProductsModel>CurrencyCode' }
+                ],
+                type: 'sap.ui.model.type.Currency',
+                formatOptions: { showMeasure: false }
+            }"
+            numberUnit="{ProductsModel>CurrencyCode}">
 
-<ObjectListItem
-    id="item0"
+            <ObjectAttribute
+                text="Stock on Hand: {ProductsModel>UnitsInStock}" />
 
-    title="{ProductsModel>ProductName}"
+            <ObjectAttribute
+                text="{
+                    parts: [
+                        { path: 'ProductsModel>UnitPrice' },
+                        { path: 'ProductsModel>UnitsInStock' },
+                        { path: 'ProductsModel>CurrencyCode' }
+                    ],
+                    formatter: '.formatter.formatStockValue'
+                }" />
 
-    number="{
-        parts: [
-            { path: 'ProductsModel>UnitPrice' },
-            { path: 'ProductsModel>CurrencyCode' }
-        ],
-        type: 'sap.ui.model.type.Currency',
-        formatOptions: {
-            showMeasure: false
-        }
-    }"
-
-    numberUnit="{ProductsModel>CurrencyCode}"
-
-    intro="{ProductsModel>QuantityPerUnit}">
-
-    <ObjectAttribute id = "111"
-        text="{
-            parts: [
-                { path: 'ProductsModel>UnitPrice' },
-                { path: 'ProductsModel>UnitsInStock' },
-                { path: 'ProductsModel>CurrencyCode' }
-            ],
-            formatter: '.formatter.formatStockValue'
-        }" />
-
-</ObjectListItem>
-
-        </items>
+        </ObjectListItem>
 
     </List>
 
 </Panel>
 
+<!-- ================= PANEL 3 ================= -->
+<Panel id="panel3" headerText="Product Details">
 
-<Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel3" headerText="Product Details" class="sapUIResponsiveMargin">   
-                <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form3">    
-                    <sap.ui.layout.form:content>
+    <form:SimpleForm
+        editable="true"
+        layout="ResponsiveGridLayout"
+        id="form3">
 
-        <Label id = "1" text="Product ID"/>
-        <Input id = "2" value='{ProductsModel>ProductID}' width="100%"/>
+        <form:content>
 
-        <Label id = "3" text="Product Name"/>
-        <Input id = "4" value="{ProductsModel>ProductName}" width="100%"/>
+            <Label text="Product ID" />
+            <Input value="{ProductsModel>/SelectedProduct/ProductID}" width="100%" />
 
-        <Label id = "5" text="Quantity per Unit"/>
-        <Input id = "6" value="{ProductsModel>QuantityPerUnit}" width="100%"/>
+            <Label text="Product Name" />
+            <Input value="{ProductsModel>/SelectedProduct/ProductName}" width="100%" />
 
-        <Label  id = "7" text="Unit Price"/>
-        <Input id = "8" value="{ProductsModel>UnitPrice}" width="100%"/>
+            <Label text="Quantity per Unit" />
+            <Input value="{ProductsModel>/SelectedProduct/QuantityPerUnit}" width="100%" />
 
-        <Label id = "9" text="Units In Stock"/>
-        <Input id = "10" value="{ProductsModel>UnitsInStock}" width="100%"/>
+            <Label text="Unit Price" />
+            <Input value="{ProductsModel>/SelectedProduct/UnitPrice}" width="100%" />
 
-        <Label id = "11" text="Discontinued"/>
-        <Input id = "12" value="{ProductsModel>Discontinued}" width="100%"/>                                    
-                    </sap.ui.layout.form:content>    
-                </sap.ui.layout.form:SimpleForm>
+            <Label text="Units In Stock" />
+            <Input value="{ProductsModel>/SelectedProduct/UnitsInStock}" width="100%" />
+
+            <Label text="Discontinued" />
+            <Input value="{ProductsModel>/SelectedProduct/Discontinued}" width="100%" />
+
+        </form:content>
+
+    </form:SimpleForm>
+
 </Panel>
 
 </content>
-
-    </Page>
+</Page>
 </mvc:View>

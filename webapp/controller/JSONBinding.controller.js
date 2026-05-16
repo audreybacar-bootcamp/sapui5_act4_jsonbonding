@@ -42,8 +42,6 @@ sap.ui.define([
     onEidSearch: function (oEvent) {
       // liveChange uses "value"
       var sEid = oEvent.getParameter("value");
-
-      // Handle blank input: clear selected employee
       sEid = (sEid || "").trim();
       var oModel = this.getView().getModel("EmployeesModel");
       if (!oModel) {
@@ -66,7 +64,6 @@ sap.ui.define([
     },
 
     onEnableChange: function (oEvent) {
-      // Your XML has select="onEnableChange" so define it to avoid errors
       var bSelected = oEvent.getParameter("selected");
 
       var oModel = this.getView().getModel("EmployeesModel");

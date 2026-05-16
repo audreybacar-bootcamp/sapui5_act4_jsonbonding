@@ -8,7 +8,6 @@
 
 <content>
 
-<!-- ================= PANEL 0 ================= -->
 <Panel
     width="auto"
     expandable="true"
@@ -38,7 +37,7 @@
     </form:SimpleForm>
 </Panel>
 
-<!-- ================= PANEL 1 ================= -->
+
 <Panel
     width="auto"
     expandable="true"
@@ -86,7 +85,7 @@
     </form:SimpleForm>
 </Panel>
 
-<!-- ================= PANEL 2 ================= -->
+
 <Panel
     width="auto"
     expandable="true"
@@ -133,7 +132,6 @@
 
 </Panel>
 
-<!-- ================= PANEL 3 ================= -->
 <Panel id="panel3" headerText="Product Details">
 
     <form:SimpleForm
